@@ -13,7 +13,7 @@ pip install -r requirements.txt
 
 Configuration File
 Modify the dataset path in configs/finetune/sub_model/gldv2.yaml.
-需要更改其中的数据集路径
+
 
 Training
 ```bash
