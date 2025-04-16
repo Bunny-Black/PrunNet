@@ -64,9 +64,9 @@ Compatibility through the parent model’s classifier.
 ### Citation
 If you find this project useful in your research, please consider citing:
 
-'''
+```bibtex
 @article{PrunNet,
   title={Learning Compatible Multi-Prize Subnetworks for Asymmetric Retrieval},
   author={Sun, Yushuai and Zhou, Zikun and Jiang, Dongmei and Wang, Yaowei and Yu, Jun and Lu, Guangming and Pei, Wenjie},
 }
-'''
+```
