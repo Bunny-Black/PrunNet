@@ -1,6 +1,6 @@
 # Learning Compatible Multi-Prize Subnetworks for Asymmetric Retrieval
 
-### Enviroments
+### Environments
 
 ```bash
 conda create -n bct python=3.7
@@ -13,6 +13,7 @@ pip install -r requirements.txt
 The training data for our project comes from a cleaned version of the original Google Landmarks Dataset v2 (GLDv2)(https://github.com/cvdfoundation/google-landmark), and we use 30% data for training. The whole training set in lmdb format will be released soon.
 #### In-shop
 The In-shop dataset can be obtained at (https://mmlab.ie.cuhk.edu.hk/projects/DeepFashion/InShopRetrieval.html).
+
 ### Quick Start
 
 Configuration File
@@ -23,7 +24,8 @@ Training
 ```bash
 bash ./orders/sub_model_gldv2.sh  # gldv2
 ```
-
+### Model Weight
+The model weights will be released soon.
 ### Settings Explanation
 
 COMP_LOSS.Type
