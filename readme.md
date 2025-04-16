@@ -1,4 +1,4 @@
-## Learning Compatible Multi-Prize Subnetworks for Asymmetric Retrieval
+# Learning Compatible Multi-Prize Subnetworks for Asymmetric Retrieval
 
 ### Enviroments
 
