@@ -1,3 +1,5 @@
+## Learning Compatible Multi-Prize Subnetworks for Asymmetric Retrieval
+
 ### Enviroments
 
 ```bash
@@ -19,20 +21,18 @@ bash ./orders/sub_model_gldv2.sh  # gldv2
 ```
 
 ### Settings Explanation
-1.
+
 COMP_LOSS.Type
 Specifies the compatibility learning method.
 
 'proj_with_cosine_sim': Our proposed method.
-2.
-PrunNet:
 
+PrunNet:
 Control the number of sub-models via SUB_MODEL.SPARSITY:
 Sparsity indicates parameter sparsity but inversely correlates with model capacity.
 Example: SUB_MODEL.SPARSITY=[0.2] → Sub-model retains 80% of parameters.
-3.
-SwitchNet:
 
+SwitchNet:
 Enable SwitchNet by setting SUB_MODEL.USE_SWITCHNET.
 Configure sub-model capacity via SNET.WIDTH_MULT_LIST:
 Sub-model parameters scale quadratically (e.g., SNET.WIDTH_MULT_LIST= [0.25, 1.0] → 1/16 parameters at 0.25 width).
@@ -51,7 +51,7 @@ Slimmable layers: src/models/subnetworks/slimmable_ops.py
 Model: src/models/subnetworks/switchnet.py (ResNet-based).
 
 ### Sub-model Computation Mechanism during Iteration
-1.At each iteration:
+At each iteration:
 Create sub-models via deepcopy from the parent model.
 Compute loss and backpropagate gradients for sub-models.
 Compute loss and backpropagate gradients for the parent model
@@ -60,3 +60,13 @@ This design ensures:
 
 Sub-model computations do not interfere with the parent model.
 Compatibility through the parent model’s classifier.
+
+### Citation
+If you find this project useful in your research, please consider citing:
+
+'''bash
+@article{PrunNet,
+  title={Learning Compatible Multi-Prize Subnetworks for Asymmetric Retrieval},
+  author={Sun, Yushuai and Zhou, Zikun and Jiang, Dongmei and Wang, Yaowei and Yu, Jun and Lu, Guangming and Pei, Wenjie},
+}
+'''
