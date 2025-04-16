@@ -8,7 +8,10 @@ conda activate bct
 conda install faiss-cpu
 pip install -r requirements.txt
 ```
-
+### Dataset
+#### GLDv2 
+The training data for our project comes from a cleaned version of the original Google Landmarks Dataset v2 (GLDv2)[GLDv2]: (https://github.com/cvdfoundation/google-landmark), we use 30% data for training. The whole training set in lmdb form will be released soon.
+#### Inshop
 ### Quick Start
 
 Configuration File
