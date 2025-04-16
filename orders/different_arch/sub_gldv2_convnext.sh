@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=2,3 python -m torch.distributed.launch --nproc_per_node=2 --master_port=35184 train.py --expe_name new_resnet_softmax_advbct --config-file ./configs/finetune/sub_model/convnext.yaml NUM_GPUS 2 OUTPUT_DIR "output/convnext/4 sub model cos exp 0.5" COMP_LOSS.TYPE 'independent' MODEL.PRETRAIN False  SUB_MODEL.SPARSITY [0.2,0.4,0.6,0.8] DATA.BATCH_SIZE 4 

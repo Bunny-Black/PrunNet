@@ -1,0 +1,86 @@
+_BASE_: "../../base-finetune.yaml"
+RUN_N_TIMES: 200
+SYNC_BN: False
+BN_TRACK: True
+DATA:
+  NAME: "lmdb-gldv2" #"retrieval-gldv2"
+  DATAPATH: "/data/sunyushuai/bct/AdvBCT-main/data/GLDv2_lmdb_old_wotransform"  #TODO: need to specify here
+  FILE_DIR: "/data/sunyushuai/bct/AdvBCT-main/data/GLDv2/gldv2_train_old_30percent_class.txt"
+  BATCH_SIZE: 64
+  MULTILABEL: False
+  RANDOM: True
+  LENGTH: 25882
+  MEMORY_RATIO: 0.5
+  
+MODEL:
+  TYPE: "swin-vit"
+  # TYPE: "timm-vit"
+  TRANSFER_TYPE: "end2end"
+  MODEL_ROOT: "./pretrained_vit"
+  SAVE_CKPT: True
+  MOMENTUM: False
+  PRETRAIN: True
+  MOMENTUM_M: 0.999
+  PROJECTION_LAYERS: 0 # 1层投影层
+  PROJECTION_DIM: 256
+  DATA: 
+    FEATURE: swin_tiny_patch4_window7_224
+    # FEATURE: vit_tiny_patch16_224_in21k
+    NUMBER_CLASSES: 24393
+    TRAIN_RATIO: 1.0
+
+LOSS:
+  TYPE: softmax
+  USE_XBM: False
+
+COMP_LOSS:
+  TYPE: 'independent'
+  WEIGHT: 1.0
+  ONLY_TEST: False
+
+SOLVER:
+  TYPE: 'submodel_compatible'
+  BASE_LR: 0.001 # 调参获取
+  WEIGHT_DECAY: 0.01
+  MOMENTUM: 0.9
+  OPTIMIZER: adamw # or adamw
+  SCHEDULER: "cosine"
+  WARMUP_EPOCH: 3
+  LOG_EVERY_N: 20
+  TOTAL_EPOCH: 30
+
+EVAL:
+  SKIP_EVAL: False
+  DATASET: 'rparis6k'
+  ROOT: "/data/sunyushuai/bct/AdvBCT-main/data/ROxfordParis"
+  SAVE_DIR: './test_results/gldv2_independent'
+  # OLD_SAVE_FILE: "./test_results/resnet_lmdb_gldv2_allmini_softmax_lmdb_ep06/lmdb-gldv2_470369_meta_radius_centernorm.json"
+  
+SUB_MODEL:
+  FIX_SUBMODEL: False
+  COM_LOSS_SCALE: 1.0
+  # SPARSITY: [0.2,0.4,0.6,0.9]
+  SPARSITY: [0.5]
+  RANDOM_SPARSITY: False
+  ONLY_TEST_PARENT: False
+  GRAD_SCALE: False
+  DEEPCOPY: True
+  SUB_MODEL_LOSS_TYPE: 'cls'
+  BCT_S: False
+  SLICE_SUBMODEL: False
+  FIXBN: True
+  FREEZEW_M: False
+  GRAD_PROJ: False
+  ADD_KL_LOSS: False
+  ADD_KL_SCALE: False
+  PROJ_W_M: False
+  ONLY_PROJ_W_M: False
+  PROJ_G_J: False
+  ADD_KL_NOISE: False
+  CHANGE_KL_SCALE: False
+  PARETO_AUG: False
+  ONLY_PARETO: False
+  ADD_HARD_SCALE: False
+  SCALE_START_EPCOH: 30
+  ADD_PARETO_GAMMA: False
+  ADD_PARETO_SCALE: False
