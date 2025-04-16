@@ -10,8 +10,9 @@ pip install -r requirements.txt
 ```
 ### Dataset
 #### GLDv2 
-The training data for our project comes from a cleaned version of the original Google Landmarks Dataset v2 (GLDv2)[GLDv2]: (https://github.com/cvdfoundation/google-landmark), we use 30% data for training. The whole training set in lmdb form will be released soon.
-#### Inshop
+The training data for our project comes from a cleaned version of the original Google Landmarks Dataset v2 (GLDv2)(https://github.com/cvdfoundation/google-landmark), and we use 30% data for training. The whole training set in lmdb format will be released soon.
+#### In-shop
+The In-shop dataset can be obtained at (https://mmlab.ie.cuhk.edu.hk/projects/DeepFashion/InShopRetrieval.html).
 ### Quick Start
 
 Configuration File
